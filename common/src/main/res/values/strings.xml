@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BooksApp</string>
+    <string name="internal_error_message">Internal error</string>
+    <string name="no_internet_connect_error_message">No Internet connection</string>
+    <string name="service_unavailable_error_message">Service unavailable</string>
 </resources>
