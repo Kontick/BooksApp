@@ -15,35 +15,22 @@ class DefaultListRepository(
     private val api: BooksApi,
     private val cacheToDomainBookMapper: CacheBook.Mapper<DomainListBook>,
     private val cloudToDomainBookMapper: CloudBook.Mapper<DomainListBook>,
-    private val cloudToCacheBookMapper : CloudBook.Mapper<CacheBook>,
+    private val cloudToCacheBookMapper: CloudBook.Mapper<CacheBook>,
     private val exceptionMessageFactory: ExceptionMessageFactory
 ) : ListRepository {
 
-    companion object {
-        private const val MAX_REPEAT_REQUEST_COUNT = 3
-    }
-
-    override suspend fun fetchBooksFromCloud(requestRepeatCount: Int): ListResult {
+    override suspend fun fetchBooksFromCloud(): ListResult {
         try {
             val response = api.fetchBooks()
-
             val code = response.code()
             if (code == 500) {
-                return ListResult.Fail(
-                    exceptionMessageFactory.map(
-                        InternalError()
-                    ),
-                    requestRepeatCount <= MAX_REPEAT_REQUEST_COUNT
-                )
+                return ListResult.Fail(exceptionMessageFactory.map(InternalError()), true)
             }
             val cloudBooks = response.body()!!
             dao.insertBooks(cloudBooks.map { it.map(cloudToCacheBookMapper) })
             return ListResult.Success(cloudBooks.map { it.map(cloudToDomainBookMapper) })
         } catch (e: UnknownHostException) {
-            return ListResult.Fail(
-                exceptionMessageFactory.map(e),
-                requestRepeatCount <= MAX_REPEAT_REQUEST_COUNT
-            )
+            return ListResult.Fail(exceptionMessageFactory.map(e), true)
         } catch (e: Exception) {
             return ListResult.Fail(exceptionMessageFactory.map(e), false)
         }

@@ -1,10 +1,15 @@
 package com.kontvip.list.di
 
+import com.kontvip.common.core.DispatcherList
 import com.kontvip.common.core.StringProvider
 import com.kontvip.common.data.cache.BooksDao
 import com.kontvip.common.data.cache.model.CacheBook
 import com.kontvip.common.data.cloud.BooksApi
 import com.kontvip.common.data.cloud.model.CloudBook
+import com.kontvip.common.navigation.ListRouteProvider
+import com.kontvip.common.navigation.RouteBuilder
+import com.kontvip.list.core.DefaultListRouteProvider
+import com.kontvip.list.core.ListRouteBuilder
 import com.kontvip.list.data.CacheToDomainListBook
 import com.kontvip.list.data.CloudToCacheBookMapper
 import com.kontvip.list.data.CloudToDomainListBook
@@ -19,6 +24,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.multibindings.IntoSet
 import javax.inject.Singleton
 
 @Module
@@ -27,12 +33,22 @@ class ListModule {
 
     @Provides
     @Singleton
+    fun provideListRouteProvider(): ListRouteProvider = DefaultListRouteProvider()
+
+    @Provides
+    @IntoSet
+    fun provideListRouteBuilder(): RouteBuilder = ListRouteBuilder()
+
+    @Provides
+    @Singleton
     fun provideFetchBookUseCase(
         repository: ListRepository,
-        booksListUiFactory: BooksListUiFactory
+        booksListUiFactory: BooksListUiFactory,
+        dispatcherList: DispatcherList
     ): FetchBookUseCase = FetchBookUseCase.Default(
         repository = repository,
-        booksListUiFactory = booksListUiFactory
+        booksListUiFactory = booksListUiFactory,
+        dispatcherList = dispatcherList
     )
 
     @Provides

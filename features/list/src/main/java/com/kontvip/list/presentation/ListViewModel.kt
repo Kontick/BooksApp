@@ -2,7 +2,9 @@ package com.kontvip.list.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
 import com.kontvip.common.core.DispatcherList
+import com.kontvip.common.navigation.DetailRouteProvider
 import com.kontvip.list.domain.FetchBookUseCase
 import com.kontvip.list.domain.core.ListScreenUiState
 import com.kontvip.list.presentation.model.LoadingUiState
@@ -16,11 +18,13 @@ interface ListViewModel {
 
     fun loadBooksData()
     fun stateFlow(): StateFlow<ListScreenUiState>
+    fun navigateToDetail(bookId: String, navController: NavController)
 
     @HiltViewModel
     class Default @Inject constructor(
         private val fetchBookUseCase: FetchBookUseCase,
-        private val dispatcherList: DispatcherList
+        private val dispatcherList: DispatcherList,
+        private val detailRouteProvider: DetailRouteProvider
     ) : ViewModel(), ListViewModel {
 
         private val mutableStateFlow = MutableStateFlow<ListScreenUiState>(LoadingUiState)
@@ -35,5 +39,8 @@ interface ListViewModel {
 
         override fun stateFlow(): StateFlow<ListScreenUiState> = mutableStateFlow
 
+        override fun navigateToDetail(bookId: String, navController: NavController) {
+            navController.navigate(detailRouteProvider.route(bookId))
+        }
     }
 }

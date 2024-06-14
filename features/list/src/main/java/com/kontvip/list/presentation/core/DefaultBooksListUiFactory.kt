@@ -8,6 +8,7 @@ import com.kontvip.list.presentation.model.BookUi
 import com.kontvip.list.presentation.model.FailUiState
 import com.kontvip.list.presentation.model.ListUiState
 
+//todo: add mapper in constructor
 class DefaultBooksListUiFactory(
 
 ) : BooksListUiFactory {
