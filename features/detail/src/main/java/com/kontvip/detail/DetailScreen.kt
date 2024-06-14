@@ -2,13 +2,15 @@ package com.kontvip.detail
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun DetailScreen() {
+fun DetailScreen(navController: NavController, bookId: String) {
 }
 
 @Composable
 @Preview
 fun DetailScreenPreview() {
-    DetailScreen()
+    DetailScreen(rememberNavController(), "1")
 }
