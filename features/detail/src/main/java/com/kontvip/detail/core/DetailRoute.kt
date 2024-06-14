@@ -11,8 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class DetailRoute(private val bookId: String) : Route {
     @Composable
-    override fun Content(navController: NavController, navBackStackEntry: NavBackStackEntry) {
-        val args = navBackStackEntry.toRoute<DetailRoute>()
-        DetailScreen(navController, args.bookId)
+    override fun Content(navController: NavController) {
+        DetailScreen(navController, bookId)
     }
 }

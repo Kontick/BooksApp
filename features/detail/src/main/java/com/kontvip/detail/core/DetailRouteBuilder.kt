@@ -9,7 +9,7 @@ import com.kontvip.common.navigation.RouteBuilder
 class DetailRouteBuilder : RouteBuilder {
     override fun build(navGraphBuilder: NavGraphBuilder, navController: NavHostController) {
         navGraphBuilder.composable<DetailRoute> {
-            it.toRoute<DetailRoute>().Content(navController = navController, navBackStackEntry = it)
+            it.toRoute<DetailRoute>().Content(navController = navController)
         }
     }
 }

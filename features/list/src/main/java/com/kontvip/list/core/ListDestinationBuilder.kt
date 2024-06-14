@@ -10,7 +10,7 @@ class ListRouteBuilder : RouteBuilder {
 
     override fun build(navGraphBuilder: NavGraphBuilder, navController: NavHostController) {
         navGraphBuilder.composable<ListRoute> {
-            it.toRoute<ListRoute>().Content(navController, it)
+            it.toRoute<ListRoute>().Content(navController = navController)
         }
     }
 }
