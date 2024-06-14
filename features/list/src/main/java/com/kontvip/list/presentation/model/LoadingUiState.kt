@@ -7,10 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.kontvip.list.domain.core.ListScreenUiState
+import com.kontvip.list.presentation.ListViewModel
 
 data object LoadingUiState : ListScreenUiState {
     @Composable
-    override fun UiDisplay() {
+    override fun UiDisplay(viewModel: ListViewModel) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
         }

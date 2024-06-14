@@ -32,7 +32,7 @@ fun ListScreen(
     }
 
     Column(modifier = modifier.fillMaxSize()) {
-        uiState.UiDisplay()
+        uiState.UiDisplay(viewModel)
     }
 }
 

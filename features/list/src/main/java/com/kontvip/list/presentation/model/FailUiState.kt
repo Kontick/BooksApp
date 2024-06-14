@@ -6,10 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import com.kontvip.list.domain.core.ListScreenUiState
+import com.kontvip.list.presentation.ListViewModel
 
 class FailUiState(private val errorMessage: String) : ListScreenUiState {
     @Composable
-    override fun UiDisplay() {
+    override fun UiDisplay(viewModel: ListViewModel) {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
