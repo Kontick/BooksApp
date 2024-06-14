@@ -27,7 +27,7 @@ class DefaultListRepository(
                 return ListResult.Fail(exceptionMessageFactory.map(InternalError()), true)
             }
             val cloudBooks = response.body()!!
-            dao.insertBooks(cloudBooks.map { it.map(cloudToCacheBookMapper) })
+            dao.insertBooks(cloudBooks.filter { it.isValid() }.map { it.map(cloudToCacheBookMapper) })
             return ListResult.Success(cloudBooks.map { it.map(cloudToDomainBookMapper) })
         } catch (e: UnknownHostException) {
             return ListResult.Fail(exceptionMessageFactory.map(e), true)

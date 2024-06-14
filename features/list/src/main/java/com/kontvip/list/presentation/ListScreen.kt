@@ -32,11 +32,6 @@ fun ListScreen(
     }
 
     Column(modifier = modifier.fillMaxSize()) {
-        Button(onClick = {
-            viewModel.navigateToDetail("1", navController)
-        }) {
-            Text(text = "detail test")
-        }
         uiState.UiDisplay()
     }
 }

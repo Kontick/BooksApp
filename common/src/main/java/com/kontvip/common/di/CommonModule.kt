@@ -17,6 +17,7 @@ import dagger.hilt.components.SingletonComponent
 import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -70,6 +71,7 @@ class CommonModule {
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl("https://run.mocky.io/v3/")
+        .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
 

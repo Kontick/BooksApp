@@ -3,18 +3,27 @@ package com.kontvip.common.data.cloud.model
 import com.google.gson.annotations.SerializedName
 
 data class CloudBook(
-    private val id: String,
-    private val title: String,
-    private val description: String,
-    private val author: String,
+    private val id: String? = null,
+    private val title: String? = null,
+    private val description: String? = null,
+    private val author: String? = null,
     @SerializedName("release_date")
-    private val releaseDate: String,
+    private val releaseDate: String? = null,
     @SerializedName("image")
-    private val imageUrl: String
+    private val imageUrl: String? = null
 ) {
 
+    fun isValid(): Boolean = !id.isNullOrBlank()
+
     fun <T> map(mapper: Mapper<T>): T {
-        return mapper.map(id, title, description, author, releaseDate, imageUrl)
+        return mapper.map(
+            id ?: "",
+            title ?: "",
+            description ?: "",
+            author ?: "",
+            releaseDate ?: "",
+            imageUrl ?: ""
+        )
     }
 
     interface Mapper<T> {
