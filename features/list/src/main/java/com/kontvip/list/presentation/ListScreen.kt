@@ -12,7 +12,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.kontvip.common.ui.BooksAppTopAppBar
+import com.kontvip.common.R
+import com.kontvip.common.ui.component.BooksAppTopAppBar
 import com.kontvip.list.domain.core.ListScreenUiState
 import com.kontvip.list.presentation.model.BookUi
 import com.kontvip.list.presentation.model.ListUiState
@@ -33,7 +34,7 @@ fun ListScreen(
 
     Column(modifier = modifier.fillMaxSize()) {
         BooksAppTopAppBar(
-            title = stringResource(id = com.kontvip.common.R.string.app_name),
+            title = stringResource(id = R.string.app_name),
             showBackButton = false
         )
         uiState.UiDisplay(onBookSelected = { bookId ->

@@ -1,4 +1,4 @@
-package com.kontvip.common.ui
+package com.kontvip.common.ui.component
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon

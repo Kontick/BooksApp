@@ -12,7 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class NavViewModel @Inject constructor(
+internal class NavViewModel @Inject constructor(
     private val routeBuilders: Set<@JvmSuppressWildcards RouteBuilder>,
 ) : ViewModel() {
     fun buildRoutes(navGraphBuilder: NavGraphBuilder, navController: NavHostController) {
