@@ -1,11 +1,9 @@
 package com.kontvip.detail.core
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import androidx.navigation.toRoute
 import com.kontvip.common.navigation.Route
-import com.kontvip.detail.DetailScreen
+import com.kontvip.detail.presentation.DetailScreen
 import kotlinx.serialization.Serializable
 
 @Serializable

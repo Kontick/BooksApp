@@ -4,4 +4,6 @@
     <string name="no_internet_connect_error_message">No Internet connection</string>
     <string name="service_unavailable_error_message">Service unavailable</string>
     <string name="book_cover">Book cover</string>
+    <string name="author">Author:</string>
+    <string name="no_book_found_message">Unfortunately, this books is not found.</string>
 </resources>

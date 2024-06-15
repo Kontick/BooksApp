@@ -18,8 +18,14 @@ import com.kontvip.list.data.ExceptionMessageFactory
 import com.kontvip.list.domain.FetchBookUseCase
 import com.kontvip.list.domain.core.BooksListUiFactory
 import com.kontvip.list.domain.core.ListRepository
+import com.kontvip.list.domain.core.ListScreenUiState
 import com.kontvip.list.domain.model.DomainListBook
+import com.kontvip.list.domain.model.ListResult
 import com.kontvip.list.presentation.core.DefaultBooksListUiFactory
+import com.kontvip.list.presentation.core.DomainToBookUiMapper
+import com.kontvip.list.presentation.core.FailResultToListScreenUiState
+import com.kontvip.list.presentation.core.SuccessResultToListScreenUiState
+import com.kontvip.list.presentation.model.BookUi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -83,7 +89,13 @@ class ListModule {
 
     @Provides
     @Singleton
-    fun provideBooksListUiFactory(): BooksListUiFactory = DefaultBooksListUiFactory()
+    fun provideBooksListUiFactory(
+        successResultToListScreenUiState: ListResult.Success.Mapper<ListScreenUiState>,
+        failResultToListScreenUiState: ListResult.Fail.Mapper<ListScreenUiState>
+    ): BooksListUiFactory = DefaultBooksListUiFactory(
+        successResultToListScreenUiState = successResultToListScreenUiState,
+        failResultToListScreenUiState = failResultToListScreenUiState
+    )
 
     @Provides
     @Singleton
@@ -92,4 +104,21 @@ class ListModule {
     ): ExceptionMessageFactory = ExceptionMessageFactory.Default(
         stringProvider = stringProvider
     )
+
+    @Provides
+    @Singleton
+    fun provideSuccessResultToListScreenUiState(
+        domainToBookUiMapper: DomainListBook.Mapper<BookUi>
+    ): ListResult.Success.Mapper<ListScreenUiState> = SuccessResultToListScreenUiState(
+        domainToBookUiMapper = domainToBookUiMapper
+    )
+
+    @Provides
+    @Singleton
+    fun provideDomainToBookUiMapper(): DomainListBook.Mapper<BookUi> = DomainToBookUiMapper()
+
+    @Provides
+    @Singleton
+    fun provideFailResultToListScreenUiState(): ListResult.Fail.Mapper<ListScreenUiState> =
+        FailResultToListScreenUiState()
 }
