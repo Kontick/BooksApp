@@ -11,7 +11,7 @@ import com.kontvip.list.presentation.ListViewModel
 
 data object LoadingUiState : ListScreenUiState {
     @Composable
-    override fun UiDisplay(viewModel: ListViewModel) {
+    override fun UiDisplay(onBookSelected: (bookId: String) -> Unit) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
         }

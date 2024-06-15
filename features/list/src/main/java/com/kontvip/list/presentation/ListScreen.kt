@@ -32,7 +32,9 @@ fun ListScreen(
     }
 
     Column(modifier = modifier.fillMaxSize()) {
-        uiState.UiDisplay(viewModel)
+        uiState.UiDisplay(onBookSelected = { bookId ->
+            viewModel.selectBook(navController, bookId)
+        })
     }
 }
 
@@ -44,18 +46,15 @@ fun ListScreenPreview() {
             return MutableStateFlow(
                 ListUiState(
                     listOf(
-                        BookUi("1", "title", "description", "https://google.com"),
-                        BookUi("2", "title2", "description", "https://google.com"),
-                        BookUi("3", "title3", "description", "https://google.com"),
-                        BookUi("4", "title4", "description", "https://google.com"),
-                        BookUi("5", "title5", "description", "https://google.com"),
+                        BookUi("1", "title1", "description1", ""),
+                        BookUi("2", "title2", "description2", ""),
+                        BookUi("3", "title3", "description3", ""),
+                        BookUi("4", "title4", "description4", ""),
+                        BookUi("5", "title5", "description5", ""),
                     )
                 )
             )
         }
-
-        override fun loadBooksData() = Unit
-        override fun navigateToDetail(bookId: String, navController: NavController) = Unit
     }
 
     ListScreen(

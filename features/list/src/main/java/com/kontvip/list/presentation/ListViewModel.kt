@@ -16,9 +16,9 @@ import javax.inject.Inject
 
 interface ListViewModel {
 
-    fun loadBooksData()
+    fun loadBooksData() = Unit
     fun stateFlow(): StateFlow<ListScreenUiState>
-    fun navigateToDetail(bookId: String, navController: NavController)
+    fun selectBook(navController: NavController, bookId: String) = Unit
 
     @HiltViewModel
     class Default @Inject constructor(
@@ -39,8 +39,9 @@ interface ListViewModel {
 
         override fun stateFlow(): StateFlow<ListScreenUiState> = mutableStateFlow
 
-        override fun navigateToDetail(bookId: String, navController: NavController) {
+        override fun selectBook(navController: NavController, bookId: String) {
             navController.navigate(detailRouteProvider.route(bookId))
+
         }
     }
 }

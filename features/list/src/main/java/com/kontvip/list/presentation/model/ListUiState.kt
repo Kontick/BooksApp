@@ -10,10 +10,10 @@ import com.kontvip.list.presentation.ListViewModel
 
 class ListUiState(private val books: List<BookUi>) : ListScreenUiState {
     @Composable
-    override fun UiDisplay(viewModel: ListViewModel) {
+    override fun UiDisplay(onBookSelected: (bookId: String) -> Unit) {
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(books) { book ->
-                book.UiDisplay(viewModel)
+                book.UiDisplay(onBookSelected)
             }
         }
     }

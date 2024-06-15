@@ -10,7 +10,7 @@ import com.kontvip.list.presentation.ListViewModel
 
 class FailUiState(private val errorMessage: String) : ListScreenUiState {
     @Composable
-    override fun UiDisplay(viewModel: ListViewModel) {
+    override fun UiDisplay(onBookSelected: (bookId: String) -> Unit) {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,

@@ -5,7 +5,7 @@ import com.kontvip.list.presentation.ListViewModel
 
 interface ListScreenUiState {
     @Composable
-    fun UiDisplay(viewModel: ListViewModel)
+    fun UiDisplay(onBookSelected: (bookId: String) -> Unit)
 
     fun canBeDisplayed(): Boolean = true
 }
