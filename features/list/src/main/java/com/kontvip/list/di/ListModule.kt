@@ -10,7 +10,7 @@ import com.kontvip.common.navigation.ListRouteProvider
 import com.kontvip.common.navigation.RouteBuilder
 import com.kontvip.list.core.DefaultListRouteProvider
 import com.kontvip.list.core.ListRouteBuilder
-import com.kontvip.list.data.BooksAppDateParser
+import com.kontvip.list.data.date.BooksAppDateParser
 import com.kontvip.list.data.CacheToDomainListBook
 import com.kontvip.list.data.CloudToCacheBookMapper
 import com.kontvip.list.data.DefaultListRepository

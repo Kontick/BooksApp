@@ -2,7 +2,6 @@ package com.kontvip.detail.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -15,7 +14,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.kontvip.common.navigation.popBackStackIfResumed
 import com.kontvip.common.ui.BooksAppTopAppBar
-import com.kontvip.detail.R
 import com.kontvip.detail.domain.model.DetailScreenUiState
 import com.kontvip.detail.presentation.model.LoadingUiState
 import kotlinx.coroutines.flow.MutableStateFlow
