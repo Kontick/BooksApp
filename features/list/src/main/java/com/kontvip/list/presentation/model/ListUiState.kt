@@ -1,12 +1,14 @@
 package com.kontvip.list.presentation.model
 
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.kontvip.list.domain.core.ListScreenUiState
-import com.kontvip.list.presentation.ListViewModel
 
 class ListUiState(private val books: List<BookUi>) : ListScreenUiState {
     @Composable
@@ -14,6 +16,7 @@ class ListUiState(private val books: List<BookUi>) : ListScreenUiState {
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(books) { book ->
                 book.UiDisplay(onBookSelected)
+                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }

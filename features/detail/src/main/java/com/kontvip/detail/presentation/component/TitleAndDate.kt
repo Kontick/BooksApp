@@ -1,4 +1,4 @@
-package com.kontvip.detail.presentation.components
+package com.kontvip.detail.presentation.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

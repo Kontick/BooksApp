@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.kontvip.list.domain.core.ListScreenUiState
-import com.kontvip.list.presentation.ListViewModel
 
 data object LoadingUiState : ListScreenUiState {
     @Composable

@@ -1,4 +1,4 @@
-package com.kontvip.detail.presentation.components
+package com.kontvip.detail.presentation.component
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
