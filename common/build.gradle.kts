@@ -1,9 +1,9 @@
 plugins {
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
     id("androidx.navigation.safeargs")
-    id("dagger.hilt.android.plugin")
     id("org.jetbrains.kotlin.plugin.serialization")
 }
 
@@ -26,6 +26,12 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

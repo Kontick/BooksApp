@@ -1,12 +1,13 @@
-package com.kontvip.booksapp
+package com.kontvip.common.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.kontvip.common.navigation.RouteBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -26,5 +27,21 @@ fun NavHostMain(navController: NavHostController, startDestination: Any) {
     val viewModel = hiltViewModel<NavViewModel>()
     NavHost(navController = navController, startDestination = startDestination) {
         viewModel.buildRoutes(this, navController)
+    }
+}
+
+fun NavController.isResumed(): Boolean {
+    return currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED
+}
+
+fun NavController.navigateIfResumed(route: Any) {
+    if (isResumed()) {
+        navigate(route)
+    }
+}
+
+fun NavController.popBackStackIfResumed() {
+    if (isResumed()) {
+        popBackStack()
     }
 }

@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -24,6 +25,7 @@ fun BookCover(imageUrl: String, modifier: Modifier = Modifier) {
             .size(60.dp)
             .clip(CircleShape),
         contentScale = ContentScale.Crop,
+        loading = placeholder(com.kontvip.common.R.drawable.default_book_cover)
     )
 }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.kontvip.common.core.DispatcherList
 import com.kontvip.common.navigation.DetailRouteProvider
+import com.kontvip.common.navigation.navigateIfResumed
 import com.kontvip.list.domain.FetchBookUseCase
 import com.kontvip.list.domain.core.ListScreenUiState
 import com.kontvip.list.presentation.model.LoadingUiState
@@ -40,8 +41,7 @@ interface ListViewModel {
         override fun stateFlow(): StateFlow<ListScreenUiState> = mutableStateFlow
 
         override fun selectBook(navController: NavController, bookId: String) {
-            navController.navigate(detailRouteProvider.route(bookId))
-
+            navController.navigateIfResumed(detailRouteProvider.route(bookId))
         }
     }
 }

@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 import com.kontvip.common.R
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -22,8 +23,9 @@ fun HeaderImage(imageUrl: String, modifier: Modifier = Modifier) {
         contentDescription = stringResource(id = R.string.book_cover),
         modifier = modifier
             .fillMaxWidth()
-            .height(150.dp),
-        contentScale = ContentScale.Crop,
+            .height(240.dp),
+        loading = placeholder(R.drawable.default_header),
+        contentScale = ContentScale.Crop
     )
 }
 

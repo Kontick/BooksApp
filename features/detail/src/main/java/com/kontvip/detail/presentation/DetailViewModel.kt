@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 interface DetailViewModel {
 
-    fun loadBookWithId(bookId: String)
+    fun loadBookWithId(bookId: String) = Unit
     fun stateFlow(): StateFlow<DetailScreenUiState>
 
     @HiltViewModel

@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.kontvip.booksapp.ui.theme.BooksAppTheme
+import com.kontvip.common.navigation.NavHostMain
 import com.kontvip.list.core.ListRoute
 import dagger.hilt.android.AndroidEntryPoint
 
