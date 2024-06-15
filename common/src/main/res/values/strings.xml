@@ -7,4 +7,5 @@
     <string name="author">Author:</string>
     <string name="no_book_found_message">Unfortunately, this books is not found.</string>
     <string name="back_button">Back button</string>
+    <string name="no_title">[No title]</string>
 </resources>

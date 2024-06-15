@@ -14,7 +14,6 @@ class DefaultListRepository(
     private val dao: BooksDao,
     private val api: BooksApi,
     private val cacheToDomainBookMapper: CacheBook.Mapper<DomainListBook>,
-    private val cloudToDomainBookMapper: CloudBook.Mapper<DomainListBook>,
     private val cloudToCacheBookMapper: CloudBook.Mapper<CacheBook>,
     private val exceptionMessageFactory: ExceptionMessageFactory
 ) : ListRepository {
@@ -27,8 +26,13 @@ class DefaultListRepository(
                 return ListResult.Fail(exceptionMessageFactory.map(InternalError()), true)
             }
             val cloudBooks = response.body()!!
-            dao.insertBooks(cloudBooks.filter { it.isValid() }.map { it.map(cloudToCacheBookMapper) })
-            return ListResult.Success(cloudBooks.map { it.map(cloudToDomainBookMapper) })
+            val cloudBooksAsCache = cloudBooks.filter { it.isValid() }.map {
+                it.map(cloudToCacheBookMapper)
+            }
+            dao.insertBooks(cloudBooksAsCache)
+            return ListResult.Success(
+                cloudBooksAsCache.sortedByDescending { it.dateInMillis }.map { it.map(cacheToDomainBookMapper) }
+            )
         } catch (e: UnknownHostException) {
             return ListResult.Fail(exceptionMessageFactory.map(e), true)
         } catch (e: Exception) {

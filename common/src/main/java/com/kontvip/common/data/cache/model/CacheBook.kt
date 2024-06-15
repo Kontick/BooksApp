@@ -11,6 +11,7 @@ class CacheBook(
     val description: String,
     val author: String,
     val releaseDate: String,
+    val dateInMillis: Long,
     val imageUrl: String
 ) {
 

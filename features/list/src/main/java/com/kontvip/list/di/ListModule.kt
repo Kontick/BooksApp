@@ -10,9 +10,9 @@ import com.kontvip.common.navigation.ListRouteProvider
 import com.kontvip.common.navigation.RouteBuilder
 import com.kontvip.list.core.DefaultListRouteProvider
 import com.kontvip.list.core.ListRouteBuilder
+import com.kontvip.list.data.BooksAppDateParser
 import com.kontvip.list.data.CacheToDomainListBook
 import com.kontvip.list.data.CloudToCacheBookMapper
-import com.kontvip.list.data.CloudToDomainListBook
 import com.kontvip.list.data.DefaultListRepository
 import com.kontvip.list.data.ExceptionMessageFactory
 import com.kontvip.list.domain.FetchBookUseCase
@@ -63,14 +63,12 @@ class ListModule {
         dao: BooksDao,
         api: BooksApi,
         cacheToDomainBookMapper: CacheBook.Mapper<DomainListBook>,
-        cloudToDomainBookMapper: CloudBook.Mapper<DomainListBook>,
         cloudToCacheBookMapper: CloudBook.Mapper<CacheBook>,
         exceptionMessageFactory: ExceptionMessageFactory
     ): ListRepository = DefaultListRepository(
         dao = dao,
         api = api,
         cacheToDomainBookMapper = cacheToDomainBookMapper,
-        cloudToDomainBookMapper = cloudToDomainBookMapper,
         cloudToCacheBookMapper = cloudToCacheBookMapper,
         exceptionMessageFactory = exceptionMessageFactory
     )
@@ -81,11 +79,13 @@ class ListModule {
 
     @Provides
     @Singleton
-    fun provideCloudToDomainListBook(): CloudBook.Mapper<DomainListBook> = CloudToDomainListBook()
-
-    @Provides
-    @Singleton
-    fun provideCloudToCacheBookMapper(): CloudBook.Mapper<CacheBook> = CloudToCacheBookMapper()
+    fun provideCloudToCacheBookMapper(
+        dateParsers: Set<@JvmSuppressWildcards BooksAppDateParser>,
+        stringProvider: StringProvider
+    ): CloudBook.Mapper<CacheBook> = CloudToCacheBookMapper(
+        dateParsers = dateParsers,
+        stringProvider = stringProvider
+    )
 
     @Provides
     @Singleton
@@ -121,4 +121,16 @@ class ListModule {
     @Singleton
     fun provideFailResultToListScreenUiState(): ListResult.Fail.Mapper<ListScreenUiState> =
         FailResultToListScreenUiState()
+
+    @Provides
+    @IntoSet
+    fun providesRegularDateParser(): BooksAppDateParser = BooksAppDateParser.RegularDateParser
+
+    @Provides
+    @IntoSet
+    fun providesYearOnlyDateParser(): BooksAppDateParser = BooksAppDateParser.YearOnlyDateParser
+
+    @Provides
+    @IntoSet
+    fun providesYearsBCEDateParser(): BooksAppDateParser = BooksAppDateParser.YearsBCEDateParser
 }

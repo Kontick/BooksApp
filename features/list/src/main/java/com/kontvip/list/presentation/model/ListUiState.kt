@@ -15,8 +15,11 @@ class ListUiState(private val books: List<BookUi>) : ListScreenUiState {
     override fun UiDisplay(onBookSelected: (bookId: String) -> Unit) {
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(books) { book ->
-                book.UiDisplay(onBookSelected)
                 Spacer(modifier = Modifier.height(8.dp))
+                book.UiDisplay(onBookSelected)
+            }
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }

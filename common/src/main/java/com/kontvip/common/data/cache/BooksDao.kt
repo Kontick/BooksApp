@@ -11,7 +11,7 @@ interface BooksDao {
     @Query("SELECT * FROM books WHERE id = :id")
     fun getBookById(id: String): CacheBook?
 
-    @Query("SELECT * FROM books")
+    @Query("SELECT * FROM books ORDER BY dateInMillis DESC")
     fun getAllBooks(): List<CacheBook>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
