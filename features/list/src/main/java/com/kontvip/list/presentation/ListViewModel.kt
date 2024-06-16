@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import com.kontvip.common.core.DispatcherList
 import com.kontvip.common.navigation.DetailRouteProvider
 import com.kontvip.common.navigation.navigateIfResumed
-import com.kontvip.list.domain.FetchBookUseCase
+import com.kontvip.list.domain.FetchBooksUseCase
 import com.kontvip.list.domain.core.ListScreenUiState
 import com.kontvip.list.presentation.model.LoadingUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,7 @@ interface ListViewModel {
 
     @HiltViewModel
     class Default @Inject constructor(
-        private val fetchBookUseCase: FetchBookUseCase,
+        private val fetchBooksUseCase: FetchBooksUseCase,
         private val dispatcherList: DispatcherList,
         private val detailRouteProvider: DetailRouteProvider
     ) : ViewModel(), ListViewModel {
@@ -31,8 +31,8 @@ interface ListViewModel {
         private val listScreenUiStateFlow = MutableStateFlow<ListScreenUiState>(LoadingUiState)
 
         override fun loadBooksData() {
-            viewModelScope.launch(dispatcherList.ui()) {
-                fetchBookUseCase.invoke {
+            viewModelScope.launch(dispatcherList.io()) {
+                fetchBooksUseCase.invoke {
                     listScreenUiStateFlow.value = it
                 }
             }

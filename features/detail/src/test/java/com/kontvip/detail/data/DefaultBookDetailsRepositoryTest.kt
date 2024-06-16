@@ -4,7 +4,7 @@ import com.kontvip.common.data.cache.BooksDao
 import com.kontvip.common.data.cache.model.CacheBook
 import com.kontvip.detail.domain.model.DetailResult
 import com.kontvip.detail.domain.model.DomainBooksDetail
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -29,7 +29,7 @@ class DefaultBookDetailsRepositoryTest {
 
         val repository = DefaultBookDetailsRepository(dao, mapper)
 
-        runBlocking {
+        runTest {
             val actualDomainBook = repository.findBookWithId("1")
 
             assertTrue(isMapperCalled)
@@ -57,7 +57,7 @@ class DefaultBookDetailsRepositoryTest {
 
         val repository = DefaultBookDetailsRepository(dao, mapper)
 
-        runBlocking {
+        runTest {
             val actualDomainBook = repository.findBookWithId("1")
 
             assertFalse(isMapperCalled)

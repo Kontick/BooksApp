@@ -6,7 +6,7 @@ sealed interface ListResult {
     fun isSuccessful(): Boolean
     fun <T> map(successMapper: Success.Mapper<T>, failMapper: Fail.Mapper<T>): T
 
-    class Success(private val books: List<DomainListBook>) : ListResult {
+    data class Success(private val books: List<DomainListBook>) : ListResult {
         override fun shouldRequestAgain(): Boolean = false
         override fun isSuccessful(): Boolean = true
 
@@ -19,7 +19,7 @@ sealed interface ListResult {
         }
     }
 
-    class Fail(
+    data class Fail(
         private val errorMessage: String,
         private val shouldRequestAgain: Boolean
     ) : ListResult {

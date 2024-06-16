@@ -11,11 +11,11 @@ import com.kontvip.common.navigation.RouteBuilder
 import com.kontvip.list.core.DefaultListRouteProvider
 import com.kontvip.list.core.ListRouteBuilder
 import com.kontvip.list.data.date.BooksAppDateParser
-import com.kontvip.list.data.CacheToDomainListBook
+import com.kontvip.list.data.CacheToDomainListBookMapper
 import com.kontvip.list.data.CloudToCacheBookMapper
 import com.kontvip.list.data.DefaultListRepository
 import com.kontvip.list.data.ExceptionMessageFactory
-import com.kontvip.list.domain.FetchBookUseCase
+import com.kontvip.list.domain.FetchBooksUseCase
 import com.kontvip.list.domain.core.BooksListUiFactory
 import com.kontvip.list.domain.core.ListRepository
 import com.kontvip.list.domain.core.ListScreenUiState
@@ -51,7 +51,7 @@ class ListModule {
         repository: ListRepository,
         booksListUiFactory: BooksListUiFactory,
         dispatcherList: DispatcherList
-    ): FetchBookUseCase = FetchBookUseCase.Default(
+    ): FetchBooksUseCase = FetchBooksUseCase.Default(
         repository = repository,
         booksListUiFactory = booksListUiFactory,
         dispatcherList = dispatcherList
@@ -75,7 +75,7 @@ class ListModule {
 
     @Provides
     @Singleton
-    fun provideCacheToDomainListBook(): CacheBook.Mapper<DomainListBook> = CacheToDomainListBook()
+    fun provideCacheToDomainListBook(): CacheBook.Mapper<DomainListBook> = CacheToDomainListBookMapper()
 
     @Provides
     @Singleton

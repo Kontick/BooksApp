@@ -1,7 +1,7 @@
 package com.kontvip.detail.data
 
 import com.kontvip.detail.domain.model.DomainBooksDetail
-import junit.framework.TestCase.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class CacheToDomainBooksDetailMapperTest {

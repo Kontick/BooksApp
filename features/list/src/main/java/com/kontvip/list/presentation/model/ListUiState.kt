@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kontvip.list.domain.core.ListScreenUiState
 
-class ListUiState(private val books: List<BookUi>) : ListScreenUiState {
+data class ListUiState(private val books: List<BookUi>) : ListScreenUiState {
     @Composable
     override fun UiDisplay(onBookSelected: (bookId: String) -> Unit) {
         LazyColumn(modifier = Modifier.fillMaxWidth()) {

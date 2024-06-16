@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import com.kontvip.list.domain.core.ListScreenUiState
 
-class FailUiState(private val errorMessage: String) : ListScreenUiState {
+data class FailUiState(private val errorMessage: String) : ListScreenUiState {
     @Composable
     override fun UiDisplay(onBookSelected: (bookId: String) -> Unit) {
         Text(
@@ -16,4 +16,6 @@ class FailUiState(private val errorMessage: String) : ListScreenUiState {
             text = errorMessage
         )
     }
+
+    override fun isFail(): Boolean = true
 }

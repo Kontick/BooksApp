@@ -6,8 +6,8 @@ import com.kontvip.detail.domain.model.DetailScreenUiState
 import com.kontvip.detail.presentation.model.NoBookFoundUiState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -50,7 +50,7 @@ class FetchBookDetailsUseCaseTest {
             fakeRepository, fakeFactory, fakeDispatcherList
         )
 
-        runBlocking {
+        runTest {
             val actualUiState = fetchBookDetailsUseCase.invoke("123")
 
             assertEquals("123", actualBookIdInRepository)

@@ -4,6 +4,7 @@ import com.kontvip.common.core.StringProvider
 import com.kontvip.common.data.cache.model.CacheBook
 import com.kontvip.common.data.cloud.model.CloudBook
 import com.kontvip.list.data.date.BooksAppDateParser
+import com.kontvip.list.data.date.FormattedDateAndMills
 
 class CloudToCacheBookMapper(
     private val dateParsers: Set<BooksAppDateParser>,

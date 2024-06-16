@@ -20,7 +20,7 @@ class CloudBookTest {
     }
 
     @Test
-    fun `map maps CloudBook to TestMapperResult`() {
+    fun `map should transform CloudBook into TestMapperResult`() {
         val cloudBook = CloudBook(
             id = "1",
             title = "Test Title",

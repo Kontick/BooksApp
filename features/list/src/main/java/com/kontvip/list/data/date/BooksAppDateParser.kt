@@ -1,10 +1,11 @@
 package com.kontvip.list.data.date
 
-import com.kontvip.list.data.FormattedDateAndMills
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+
+typealias FormattedDateAndMills = Pair<String, Long>
 
 abstract class BooksAppDateParser(datePattern: String, regexPattern: String) {
 
@@ -42,7 +43,7 @@ abstract class BooksAppDateParser(datePattern: String, regexPattern: String) {
 
     object YearOnlyDateParser : BooksAppDateParser(
         datePattern = "yyyy",
-        regexPattern = "\\d{4}"
+        regexPattern = "^\\d{4}\$"
     )
 
     object YearsBCEDateParser : BooksAppDateParser(

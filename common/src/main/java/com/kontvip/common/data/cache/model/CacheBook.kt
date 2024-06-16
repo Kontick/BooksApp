@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 //Fields must be public because of Room
 @Entity(tableName = "books")
-class CacheBook(
+data class CacheBook(
     @PrimaryKey val id: String,
     val title: String,
     val description: String,

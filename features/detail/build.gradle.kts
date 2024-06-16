@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.compose)
 
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.junit)

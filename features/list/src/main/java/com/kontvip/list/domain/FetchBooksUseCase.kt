@@ -7,7 +7,7 @@ import com.kontvip.list.domain.core.ListScreenUiState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
-interface FetchBookUseCase {
+interface FetchBooksUseCase {
 
     suspend fun invoke(onResultBlock: (ListScreenUiState) -> Unit)
 
@@ -15,7 +15,7 @@ interface FetchBookUseCase {
         private val repository: ListRepository,
         private val booksListUiFactory: BooksListUiFactory,
         private val dispatcherList: DispatcherList
-    ) : FetchBookUseCase {
+    ) : FetchBooksUseCase {
 
         companion object {
             private const val MAX_REPEAT_COUNT = 3
@@ -28,7 +28,8 @@ interface FetchBookUseCase {
             if (areBooksAlreadyFetched) return
             withContext(dispatcherList.io()) {
                 val cache = booksListUiFactory.construct(repository.getCachedBooks())
-                if (cache.canBeDisplayed()) {
+                val canCacheBeDisplayed = cache.canBeDisplayed()
+                if (canCacheBeDisplayed) {
                     onResultBlock.invoke(cache)
                 }
                 var result = repository.fetchBooksFromCloud()
@@ -38,7 +39,11 @@ interface FetchBookUseCase {
                     result = repository.fetchBooksFromCloud()
                     repeatCount++
                 }
-                onResultBlock.invoke(booksListUiFactory.construct(result))
+                val cloud = booksListUiFactory.construct(result)
+                if (cloud.isFail() && canCacheBeDisplayed) {
+                    return@withContext
+                }
+                onResultBlock.invoke(cloud)
                 areBooksAlreadyFetched = result.isSuccessful()
             }
         }

@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-06-16T11:15:40.452896Z">
+        <DropdownSelection timestamp="2024-06-16T15:50:33.206579Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=aewc6d8lzpzh5xz9" />
@@ -13,13 +13,13 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="DetailScreenKtTest">
+      <SelectionState runConfigName="listScreenDisplaysListUiState()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="detailScreen_whenNoBookFound_contentDisplayedCorrectly()">
+      <SelectionState runConfigName="listScreenDisplaysFailUiState()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.kontvip.detail'">
+      <SelectionState runConfigName="ListScreenKtTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

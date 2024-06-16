@@ -7,4 +7,6 @@ interface ListScreenUiState {
     fun UiDisplay(onBookSelected: (bookId: String) -> Unit)
 
     fun canBeDisplayed(): Boolean = true
+
+    fun isFail(): Boolean = false
 }

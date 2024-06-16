@@ -7,7 +7,7 @@ class DomainBooksDetailTest {
 
     @Test
     fun `map should transform DomainBooksDetail into TestMapperResult`() {
-        val cacheBook = DomainBooksDetail(
+        val domainBookDetails = DomainBooksDetail(
             title = "Test Title",
             description = "Test Description",
             author = "Test Author",
@@ -15,7 +15,7 @@ class DomainBooksDetailTest {
             imageUrl = "https://test.com"
         )
 
-        val actual = cacheBook.map(TestMapper())
+        val actual = domainBookDetails.map(TestMapper())
 
         val expected = TestMapperResult(
             title = "Test Title",
