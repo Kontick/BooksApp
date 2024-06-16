@@ -11,7 +11,7 @@ abstract class BaseComposeTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    protected val context: Context = InstrumentationRegistry.getInstrumentation().targetContext
+    private val context: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
 
     protected fun string(@StringRes stringRes: Int): String = context.getString(stringRes)

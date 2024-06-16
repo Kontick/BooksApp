@@ -12,7 +12,6 @@ import com.kontvip.list.domain.core.ListScreenUiState
 import com.kontvip.list.presentation.model.ListUiState
 import com.kontvip.list.presentation.model.LoadingUiState
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
