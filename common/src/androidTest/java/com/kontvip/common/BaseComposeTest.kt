@@ -13,6 +13,5 @@ abstract class BaseComposeTest {
 
     private val context: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
-
     protected fun string(@StringRes stringRes: Int): String = context.getString(stringRes)
 }
