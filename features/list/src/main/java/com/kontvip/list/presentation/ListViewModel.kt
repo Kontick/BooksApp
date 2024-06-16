@@ -18,7 +18,7 @@ import javax.inject.Inject
 interface ListViewModel {
 
     fun loadBooksData() = Unit
-    fun stateFlow(): StateFlow<ListScreenUiState>
+    fun listScreenUiStateFlow(): StateFlow<ListScreenUiState>
     fun selectBook(navController: NavController, bookId: String) = Unit
 
     @HiltViewModel
@@ -28,17 +28,17 @@ interface ListViewModel {
         private val detailRouteProvider: DetailRouteProvider
     ) : ViewModel(), ListViewModel {
 
-        private val mutableStateFlow = MutableStateFlow<ListScreenUiState>(LoadingUiState)
+        private val listScreenUiStateFlow = MutableStateFlow<ListScreenUiState>(LoadingUiState)
 
         override fun loadBooksData() {
             viewModelScope.launch(dispatcherList.ui()) {
                 fetchBookUseCase.invoke {
-                    mutableStateFlow.value = it
+                    listScreenUiStateFlow.value = it
                 }
             }
         }
 
-        override fun stateFlow(): StateFlow<ListScreenUiState> = mutableStateFlow
+        override fun listScreenUiStateFlow(): StateFlow<ListScreenUiState> = listScreenUiStateFlow
 
         override fun selectBook(navController: NavController, bookId: String) {
             navController.navigateIfResumed(detailRouteProvider.route(bookId))

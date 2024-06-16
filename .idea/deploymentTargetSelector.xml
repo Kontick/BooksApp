@@ -13,7 +13,13 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="UserDatabasePassphraseDefaultTest">
+      <SelectionState runConfigName="DetailScreenKtTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="detailScreen_whenNoBookFound_contentDisplayedCorrectly()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Tests in 'com.kontvip.detail'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

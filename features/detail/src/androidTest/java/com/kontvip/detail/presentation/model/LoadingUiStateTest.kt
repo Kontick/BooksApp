@@ -1,16 +1,17 @@
-package com.kontvip.common.ui.component
+package com.kontvip.detail.presentation.model
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.onNodeWithTag
-import com.kontvip.common.BaseComposeTest
+import com.kontvip.common.ui.component.CenteredCircularProgressIndicator
+import com.kontvip.detail.BaseComposeTest
 import org.junit.Test
 
-class CenteredCircularProgressIndicatorTest : BaseComposeTest() {
+class LoadingUiStateTest : BaseComposeTest() {
 
     @Test
-    fun circularProgressIndicator_displayed() {
+    fun loadingUiState_centeredCircularProgressIndicatorDisplayed() {
         composeTestRule.setContent {
-            CenteredCircularProgressIndicator()
+            LoadingUiState.UiDisplay()
         }
 
         composeTestRule
@@ -18,4 +19,5 @@ class CenteredCircularProgressIndicatorTest : BaseComposeTest() {
             .assertExists()
             .assertIsDisplayed()
     }
+
 }

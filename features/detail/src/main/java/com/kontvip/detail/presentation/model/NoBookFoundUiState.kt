@@ -34,7 +34,7 @@ data object NoBookFoundUiState : DetailScreenUiState {
         ) {
             Image(
                 painter = painterResource(id = com.kontvip.common.R.drawable.ic_no_book_found),
-                contentDescription = null,
+                contentDescription = stringResource(id = com.kontvip.common.R.string.no_book_found_message_image_description),
                 modifier = Modifier.size(120.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))

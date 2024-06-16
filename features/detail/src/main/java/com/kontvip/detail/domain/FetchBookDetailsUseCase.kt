@@ -4,7 +4,7 @@ import com.kontvip.common.core.DispatcherList
 import com.kontvip.detail.domain.model.DetailScreenUiState
 import kotlinx.coroutines.withContext
 
-interface FetchBooksDetailUseCase {
+interface FetchBookDetailsUseCase {
 
     suspend fun invoke(bookId: String): DetailScreenUiState
 
@@ -12,7 +12,7 @@ interface FetchBooksDetailUseCase {
         private val bookDetailsRepository: BookDetailsRepository,
         private val booksDetailUiFactory: BooksDetailUiFactory,
         private val dispatcherList: DispatcherList
-    ) : FetchBooksDetailUseCase {
+    ) : FetchBookDetailsUseCase {
 
         override suspend fun invoke(bookId: String): DetailScreenUiState {
             return withContext(dispatcherList.io()) {

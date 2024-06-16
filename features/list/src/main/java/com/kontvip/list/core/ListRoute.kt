@@ -7,7 +7,7 @@ import com.kontvip.list.presentation.ListScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
-class ListRoute : Route {
+data object ListRoute : Route {
     @Composable
     override fun Content(navController: NavController) {
         ListScreen(navController = navController)

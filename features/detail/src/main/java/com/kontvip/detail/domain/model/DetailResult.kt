@@ -4,7 +4,7 @@ interface DetailResult {
 
     fun <T> map(successMapper: Success.Mapper<T>, failMapper: NoBookFound.Mapper<T>): T
 
-    class Success(private val domainBooksDetail: DomainBooksDetail) : DetailResult {
+    data class Success(private val domainBooksDetail: DomainBooksDetail) : DetailResult {
         override fun <T> map(successMapper: Mapper<T>, failMapper: NoBookFound.Mapper<T>): T {
             return successMapper.map(domainBooksDetail)
         }
@@ -14,7 +14,7 @@ interface DetailResult {
         }
     }
 
-    class NoBookFound : DetailResult {
+    data object NoBookFound : DetailResult {
         override fun <T> map(successMapper: Success.Mapper<T>, failMapper: Mapper<T>): T {
             return failMapper.map()
         }

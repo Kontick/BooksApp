@@ -27,7 +27,7 @@ fun DetailScreen(
     modifier: Modifier = Modifier,
     viewModel: DetailViewModel = hiltViewModel<DetailViewModel.Default>()
 ) {
-    val detailBook by viewModel.stateFlow().collectAsState()
+    val detailBook by viewModel.detailScreenUiStateFlow().collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.loadBookWithId(bookId)
@@ -48,7 +48,7 @@ fun DetailScreen(
 @Preview
 fun DetailScreenPreview() {
     val fakeViewModel = object : DetailViewModel {
-        override fun stateFlow(): StateFlow<DetailScreenUiState> {
+        override fun detailScreenUiStateFlow(): StateFlow<DetailScreenUiState> {
             return MutableStateFlow(LoadingUiState)
         }
     }

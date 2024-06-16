@@ -11,12 +11,12 @@ import com.kontvip.detail.data.CacheToDomainBooksDetailMapper
 import com.kontvip.detail.data.DefaultBookDetailsRepository
 import com.kontvip.detail.domain.BookDetailsRepository
 import com.kontvip.detail.domain.BooksDetailUiFactory
-import com.kontvip.detail.domain.FetchBooksDetailUseCase
+import com.kontvip.detail.domain.FetchBookDetailsUseCase
 import com.kontvip.detail.domain.model.DetailResult
 import com.kontvip.detail.domain.model.DetailScreenUiState
 import com.kontvip.detail.domain.model.DomainBooksDetail
 import com.kontvip.detail.presentation.core.DefaultBooksDetailUiFactory
-import com.kontvip.detail.presentation.core.DomainToBookDetailsUiState
+import com.kontvip.detail.presentation.core.DomainToBookDetailsUiStateMapper
 import com.kontvip.detail.presentation.core.NoBooksResultToDetailScreenUiState
 import com.kontvip.detail.presentation.core.SuccessResultToDetailScreenUiState
 import dagger.Module
@@ -59,7 +59,7 @@ class DetailModule {
         bookDetailsRepository: BookDetailsRepository,
         booksDetailUiFactory: BooksDetailUiFactory,
         dispatcherList: DispatcherList
-    ): FetchBooksDetailUseCase = FetchBooksDetailUseCase.Default(
+    ): FetchBookDetailsUseCase = FetchBookDetailsUseCase.Default(
         bookDetailsRepository = bookDetailsRepository,
         booksDetailUiFactory = booksDetailUiFactory,
         dispatcherList = dispatcherList
@@ -87,7 +87,7 @@ class DetailModule {
     @Provides
     @Singleton
     fun provideDomainToBookDetailsUiState(): DomainBooksDetail.Mapper<DetailScreenUiState> =
-        DomainToBookDetailsUiState()
+        DomainToBookDetailsUiStateMapper()
 
     @Provides
     @Singleton

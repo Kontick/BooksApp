@@ -12,6 +12,6 @@ class DefaultBookDetailsRepository(
 ) : BookDetailsRepository {
     override suspend fun findBookWithId(bookId: String): DetailResult {
         return booksDao.getBookById(bookId)?.map(cacheToDomainBooksDetailMapper)
-            ?.let { DetailResult.Success(it) } ?: DetailResult.NoBookFound()
+            ?.let { DetailResult.Success(it) } ?: DetailResult.NoBookFound
     }
 }

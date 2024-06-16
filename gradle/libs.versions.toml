@@ -27,6 +27,7 @@ roomVersion = "2.6.1"
 securityCrypto = "1.0.0"
 composeNavigation = "2.8.0-beta03"
 serialization = "1.6.1"
+navigationTesting = "2.7.7"
 
 [libraries]
 android-database-sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "androidDatabaseSqlcipher" }
@@ -74,5 +75,6 @@ ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 ui = { module = "androidx.compose.ui:ui" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
+androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationTesting" }
 
 [plugins]

@@ -7,8 +7,8 @@ import com.kontvip.detail.domain.model.DetailScreenUiState
 class DefaultBooksDetailUiFactory(
     private val successResultToDetailScreenUiState: DetailResult.Success.Mapper<DetailScreenUiState>,
     private val noBooksResultToDetailScreenUiState: DetailResult.NoBookFound.Mapper<DetailScreenUiState>,
+) : BooksDetailUiFactory {
 
-    ) : BooksDetailUiFactory {
     override fun construct(detailResult: DetailResult): DetailScreenUiState {
         return detailResult.map(
             successResultToDetailScreenUiState, noBooksResultToDetailScreenUiState

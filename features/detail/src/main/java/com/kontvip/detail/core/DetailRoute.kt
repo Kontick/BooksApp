@@ -7,7 +7,7 @@ import com.kontvip.detail.presentation.DetailScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
-class DetailRoute(private val bookId: String) : Route {
+data class DetailRoute(private val bookId: String) : Route {
     @Composable
     override fun Content(navController: NavController) {
         DetailScreen(navController, bookId)

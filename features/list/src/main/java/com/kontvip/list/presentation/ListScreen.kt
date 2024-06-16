@@ -26,7 +26,7 @@ fun ListScreen(
     modifier: Modifier = Modifier,
     viewModel: ListViewModel = hiltViewModel<ListViewModel.Default>()
 ) {
-    val uiState by viewModel.stateFlow().collectAsState()
+    val uiState by viewModel.listScreenUiStateFlow().collectAsState()
 
     LaunchedEffect(true) {
         viewModel.loadBooksData()
@@ -47,7 +47,7 @@ fun ListScreen(
 @Composable
 fun ListScreenPreview() {
     val fakeViewModel = object : ListViewModel {
-        override fun stateFlow(): StateFlow<ListScreenUiState> {
+        override fun listScreenUiStateFlow(): StateFlow<ListScreenUiState> {
             return MutableStateFlow(
                 ListUiState(
                     listOf(

@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
             BooksAppTheme {
                 NavHostMain(
                     navController = rememberNavController(),
-                    startDestination = ListRoute()
+                    startDestination = ListRoute
                 )
             }
         }
