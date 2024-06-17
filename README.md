@@ -42,6 +42,7 @@ Testing in BooksApp includes *unit*, *UI*, and *instrumented* tests throughout t
 - Jetpack Compose;
 - Hilt;
 - Retrofit;
+- Room;
 - Coroutines;
 - Flow;
 - Glide;
