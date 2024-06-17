@@ -14,7 +14,7 @@ BooksApp is an Android application built with Kotlin and Jetpack Compose as an i
   
 - **Clean Architecture**: Each module and the common module are structured into `data`, `domain`, and `presentation` layers.
 
-- **Security**: Local database is secured using SQLcipher. A random 32-byte passphrase is generated and stored in an encrypted file on the device (implemented in `PassphraseGenerator.kt` and `UserDatabasePassphrase.kt`).
+- **Security**: Local database is secured using SQLcipher. A random 32-byte passphrase is generated and stored in an encrypted file on the device (implemented in `PassphraseGenerator.kt` and `BooksDatabasePassphrase.kt`).
 
 - **Data Synchronization**: Implements retry mechanism (3 retries with 2 seconds backoff delay) for handling data synchronization failures like 500 internal server errors or network coverage issues.
 
