@@ -8,7 +8,7 @@ import com.kontvip.common.data.cache.BooksDao
 import com.kontvip.common.data.cache.BooksDatabase
 import com.kontvip.common.data.cloud.BooksApi
 import com.kontvip.common.data.security.PassphraseGenerator
-import com.kontvip.common.data.security.UserDatabasePassphrase
+import com.kontvip.common.data.security.BooksDatabasePassphrase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,10 +26,10 @@ class CommonModule {
 
     @Provides
     @Singleton
-    fun provideUserDatabasePassphrase(
+    fun provideBooksDatabasePassphrase(
         @ApplicationContext context: Context,
         passphraseGenerator: PassphraseGenerator
-    ): UserDatabasePassphrase = UserDatabasePassphrase.Default(
+    ): BooksDatabasePassphrase = BooksDatabasePassphrase.Default(
         context = context,
         passphraseGenerator = passphraseGenerator
     )
@@ -37,9 +37,9 @@ class CommonModule {
     @Provides
     @Singleton
     fun provideSupportFactory(
-        userDatabasePassphrase: UserDatabasePassphrase
+        booksDatabasePassphrase: BooksDatabasePassphrase
     ): SupportFactory = SupportFactory(
-        userDatabasePassphrase.getPassphrase()
+        booksDatabasePassphrase.getPassphrase()
     )
 
     @Provides

@@ -5,14 +5,14 @@ import androidx.security.crypto.EncryptedFile
 import androidx.security.crypto.MasterKeys
 import java.io.File
 
-interface UserDatabasePassphrase {
+interface BooksDatabasePassphrase {
 
     fun getPassphrase(): ByteArray
 
     class Default(
         private val context: Context,
         private val passphraseGenerator: PassphraseGenerator
-    ) : UserDatabasePassphrase {
+    ) : BooksDatabasePassphrase {
 
         companion object {
             private const val PASSPHRASE_FILE_NAME = "user_passphrase.bin"

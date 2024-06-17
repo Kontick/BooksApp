@@ -7,7 +7,7 @@ import org.junit.Before
 import org.junit.Test
 import java.io.File
 
-class UserDatabasePassphraseDefaultTest {
+class BooksDatabasePassphraseDefaultTest {
 
     private lateinit var context: Context
     private lateinit var passphraseGenerator: PassphraseGenerator
@@ -29,9 +29,9 @@ class UserDatabasePassphraseDefaultTest {
         mockFile.delete()
         mockFile.writeBytes("mock_passphrase".toByteArray())
 
-        val userDatabasePassphrase = UserDatabasePassphrase.Default(context, passphraseGenerator)
+        val booksDatabasePassphrase = BooksDatabasePassphrase.Default(context, passphraseGenerator)
 
-        val result = userDatabasePassphrase.getPassphrase()
+        val result = booksDatabasePassphrase.getPassphrase()
 
         assertArrayEquals("mock_passphrase".toByteArray(), result)
 
@@ -41,9 +41,9 @@ class UserDatabasePassphraseDefaultTest {
     @Test
     fun getPassphrase_whenFileDoesNotExist() {
         deletePassphraseFileIfExists()
-        val userDatabasePassphrase = UserDatabasePassphrase.Default(context, passphraseGenerator)
+        val booksDatabasePassphrase = BooksDatabasePassphrase.Default(context, passphraseGenerator)
 
-        val result = userDatabasePassphrase.getPassphrase()
+        val result = booksDatabasePassphrase.getPassphrase()
 
         assertArrayEquals("mock_passphrase".toByteArray(), result)
     }
