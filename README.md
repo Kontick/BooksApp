@@ -33,7 +33,7 @@ BooksApp is an Android application built with Kotlin and Jetpack Compose as an i
 
 ## Testing
 
-Testing in BooksApp includes *unit*, *UI*, and *instrumented* tests throughout the application. A notable aspect is the "Delay test", located in `FetchBooksUseCaseTest.kt`, which evaluates the interval (in seconds) between retries.
+Testing in BooksApp includes *unit*, *UI*, and *instrumented* tests throughout the application. A notable aspect is the "Delay test", located in `FetchBooksUseCaseTest.kt`, which evaluates the interval (in seconds) between retries when sending requests to the server.
 
 
 ## Stack:
