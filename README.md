@@ -50,7 +50,8 @@ Testing in BooksApp includes *unit*, *UI*, and *instrumented* tests throughout t
 - SQLcipher.
 
 **Architecture:**
-- Clean Architecture with modular structure.
+- Clean Architecture with modular structure;
+- Architecture pattern: MVVM.
 
 **Notes:**
 - No public fields throughout the project except in one file (`CacheBook.kt` entity for Room database) due to necessary code generation.
