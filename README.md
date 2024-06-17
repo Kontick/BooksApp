@@ -53,5 +53,5 @@ Testing in BooksApp includes *unit*, *UI*, and *instrumented* tests throughout t
 - Clean Architecture with modular structure;
 - Architecture pattern: MVVM.
 
-**Notes:**
-- No public fields throughout the project except in one file (`CacheBook.kt` entity for Room database) due to necessary code generation.
+## Notes:
+No public fields and private functions throughout the project except in tests and in one file (`CacheBook.kt` entity for Room database) due to necessary code generation.
