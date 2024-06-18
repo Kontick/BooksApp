@@ -15,7 +15,7 @@ interface BooksDatabasePassphrase {
     ) : BooksDatabasePassphrase {
 
         companion object {
-            private const val PASSPHRASE_FILE_NAME = "user_passphrase.bin"
+            private const val PASSPHRASE_FILE_NAME = "books_passphrase.bin"
         }
 
         override fun getPassphrase(): ByteArray {

@@ -70,7 +70,7 @@ class CommonModule {
     @Provides
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://run.mocky.io/v3/")
+        .baseUrl("https://c27b2d72-8d9c-4aa0-b549-7ae7e5666815.mock.pstmn.io")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
