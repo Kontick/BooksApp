@@ -5,7 +5,7 @@
     <string name="service_unavailable_error_message">Service unavailable</string>
     <string name="book_cover">Book cover</string>
     <string name="author">Author:</string>
-    <string name="no_book_found_message">Unfortunately, this books is not found.</string>
+    <string name="no_book_found_message">Unfortunately, this book is not found.</string>
     <string name="no_book_found_message_image_description">Book is not found image.</string>
     <string name="back_button">Back button</string>
     <string name="no_title">[No title]</string>
