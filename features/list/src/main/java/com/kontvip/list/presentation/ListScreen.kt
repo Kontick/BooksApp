@@ -2,6 +2,8 @@ package com.kontvip.list.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -32,14 +34,20 @@ fun ListScreen(
         viewModel.loadBooksData()
     }
 
-    Column(modifier = modifier.fillMaxSize()) {
-        BooksAppTopAppBar(
-            title = stringResource(id = R.string.app_name),
-            showBackButton = false
-        )
-        uiState.UiDisplay(onBookSelected = { bookId ->
-            viewModel.selectBook(navController, bookId)
-        })
+    Scaffold { paddingValues ->
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(bottom = paddingValues.calculateBottomPadding())
+        ) {
+            BooksAppTopAppBar(
+                title = stringResource(id = R.string.app_name),
+                showBackButton = false
+            )
+            uiState.UiDisplay(onBookSelected = { bookId ->
+                viewModel.selectBook(navController, bookId)
+            })
+        }
     }
 }
 

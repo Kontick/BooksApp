@@ -2,6 +2,8 @@ package com.kontvip.detail.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -33,14 +35,20 @@ fun DetailScreen(
         viewModel.loadBookWithId(bookId)
     }
 
-    Column(modifier = modifier.fillMaxSize()) {
-        BooksAppTopAppBar(
-            title = stringResource(id = R.string.app_name),
-            showBackButton = true
+    Scaffold { paddingValues ->
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(bottom = paddingValues.calculateBottomPadding())
         ) {
-            navController.popBackStackIfResumed()
+            BooksAppTopAppBar(
+                title = stringResource(id = R.string.app_name),
+                showBackButton = true
+            ) {
+                navController.popBackStackIfResumed()
+            }
+            detailBook.UiDisplay()
         }
-        detailBook.UiDisplay()
     }
 }
 

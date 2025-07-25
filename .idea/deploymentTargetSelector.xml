@@ -4,27 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-06-18T08:54:03.841735Z">
+        <DropdownSelection timestamp="2025-07-25T10:02:13.485504Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=aewc6d8lzpzh5xz9" />
-            </handle>
-          </Target>
-        </DropdownSelection>
-        <DialogSelection />
-      </SelectionState>
-      <SelectionState runConfigName="ListScreenKtTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="a()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="BooksDatabasePassphraseDefaultTest">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-06-18T08:52:29.339571Z">
-          <Target type="DEFAULT_BOOT">
-            <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/timelycodedevelop/.android/avd/Pixel_2_API_31.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/ivantitov/.android/avd/Medium_Phone_API_35_Diana.avd" />
             </handle>
           </Target>
         </DropdownSelection>
